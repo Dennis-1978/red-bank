@@ -10,6 +10,7 @@ export class Layout {
       <nav>
         <a href="/">Home</a>
         <a href="/auth">Auth</a>
+        <a href="/about-us">About</a>
       </nav>
     </header>`;
 

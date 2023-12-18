@@ -2,9 +2,6 @@ import { Layout } from '@/components/layout/layout.component';
 import { ROUTES } from './routes.data';
 import { NotFound } from '@/components/screens/not-found/not-found.component';
 
-/**
- * Маршрутизатор
- */
 export class Router {
 	#routes = ROUTES;
 	#currentRoute = null;
@@ -20,8 +17,8 @@ export class Router {
 	}
 
 	/**
-	 * Обрабатывает все слушатели, если слушатель ссылка -
-	 * производит переадресацию через #handleRouteChange.
+	 * Processes all listeners, if the listener link -
+	 * redirects via #handleRouteChange.
 	 */
 	#handleLinks() {
 		document.addEventListener('click', event => {
@@ -43,15 +40,15 @@ export class Router {
 	}
 
 	/**
-	 * Получает путь из строки браузера
-	 * @returns {String} Возвращает текущий путь
+	 * Gets the path from the browser string.
+	 * @returns {String} Returns the current path.
 	 */
 	getCurrentPath() {
 		return window.location.pathname;
 	}
 
 	/**
-	 * Устанавливает текущий путь
+	 * Sets the current path.
 	 */
 	#handleRouteChange() {
 		const path = this.getCurrentPath() || '/';
