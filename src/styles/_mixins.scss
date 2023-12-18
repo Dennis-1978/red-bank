@@ -1,0 +1,25 @@
+@import 'src/styles/variables';
+
+// Свойства для блоков различного размера
+@mixin dashboard-section($variant: 'big') {
+  margin-top: $gap;
+  background-color: $bg-block;
+  border-radius: $radius;
+
+  @if $variant == small {
+    padding: 18px 26px;
+  } @else {
+    padding: 25px 35px;
+  }
+}
+
+// Выравнивание по горизонтали
+@mixin flex-horizontal-center {
+  display: flex;
+  align-items: center;
+}
+
+// Добавление анимации плавности
+@mixin transition($property: all) {
+  transition: $property 0.3s ease-in-out;
+}
