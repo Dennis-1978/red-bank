@@ -14,6 +14,10 @@ class RenderService {
 
 		const element = template.content.firstChild;
 
+		if (styles) {
+			this.#applyModuleStyles(styles, element)
+		}
+
 		this.#replaceComponentText(element, components);
 
 		return element;
@@ -56,6 +60,37 @@ class RenderService {
 				}
 			}
 		}
+	}
+
+	/**
+	 * @param {Object} moduleStyles Modular styles.
+	 * @param {String} element Parent element.
+	 * @returns {void}
+	 */
+	#applyModuleStyles(moduleStyles, element) {
+		if (!element) return;
+
+		/**
+		 * The function traverses the element's classes
+		 * and generates a new class.
+		 */
+		const applayStyles = element => {
+			for (const [key, value] of Object.entries(moduleStyles)) {
+				if (element.classList.contains(key)) {
+					element.classList.remove(key);
+					element.classList.add(value);
+				}
+			}
+		};
+
+		// If the parent has a class attribute, the styles are 
+		// applied to it as well
+		if (element.getAttribute('class')) {
+			applayStyles(element);
+		}
+
+		const elements = element.querySelectorAll('*');
+		elements.forEach(applayStyles);
 	}
 }
 
