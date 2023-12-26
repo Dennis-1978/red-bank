@@ -19,11 +19,9 @@ export class Layout extends ChildComponent {
 		this.element = renderService.htmlToElement(template, [], styles);
 
 		const mainElement = $R(this.element).find('main');
-
 		const contentContainer = $R(this.element).find('#content');
 
 		contentContainer.append(this.children);
-
 		mainElement.before(new Header().render()).append(contentContainer.element);
 
 		return this.element;
