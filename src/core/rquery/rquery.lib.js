@@ -1,4 +1,4 @@
-import { formatCardNumberWithDashes } from "@/utils/format/format-card-number";
+import { formatCardNumberWithDashes } from '@/utils/format/format-card-number';
 
 /**
  * Represents the RQuery class for working with DOM elements.
@@ -83,6 +83,20 @@ class RQuery {
 			return this.element.innerHTML;
 		} else {
 			this.element.innerHTML = htmlContent;
+			return this;
+		}
+	}
+
+	/**
+	 * Get or set the inner HTML of the selected element.
+	 * @param {String} [textContent] - Optional text content to set. If not provided, the current text content will be returned.
+	 * @returns {RQuery | String} The current RQuery instance for chaining when setting text content, or the current text content when getting.
+	 */
+	text(textContent) {
+		if (typeof textContent === 'undefined') {
+			return this.element.textContent;
+		} else {
+			this.element.textContent = textContent;
 			return this;
 		}
 	}
@@ -196,7 +210,7 @@ class RQuery {
 
 	/**
 	 * Adds a class or a list of classes to the current element.
-	 * @param {string | string[]} classNames - A single class name or an array of class names to add to the element.
+	 * @param {String | String[]} classNames - A single class name or an array of class names to add to the element.
 	 * @returns {RQuery} The current RQuery instance for chaining.
 	 */
 	addClass(classNames) {
@@ -213,7 +227,7 @@ class RQuery {
 
 	/**
 	 * Removes a class or a list of classes from the current element.
-	 * @param {string | string[]} classNames - A single class name or an array of class names to remove from the element.
+	 * @param {String | String[]} classNames - A single class name or an array of class names to remove from the element.
 	 * @returns {RQuery} The current RQuery instance for chaining.
 	 */
 	removeClass(classNames) {
@@ -226,6 +240,26 @@ class RQuery {
 		}
 
 		return this;
+	}
+
+	/**
+	 * Set or value of an attribute on the selected element.
+	 * @param {String} attributeName - The name of the attribute to set or get.
+	 * @param {String} [value] - The value to set for attribute. If not provided, the current value of the attribute will be returned.
+	 * @returns {RQuery | String} The current RQuery instance for chaining (if setting) or the attribute value (if getting).
+	 */
+	attr(attributeName, value) {
+		if (typeof attributeName !== 'string') {
+			throw new Error('Attribute name must be a string');
+		}
+
+		if (typeof value === 'undefined') {
+			return this.element.getAttribute(attributeName);
+		} else {
+			this.element.setAttribute(attributeName, value);
+
+			return this;
+		}
 	}
 }
 
