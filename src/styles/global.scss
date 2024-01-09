@@ -18,6 +18,7 @@ input {
   font-size: 16px;
   background-color: transparent;
   color: $white;
+  border: none;
 
   &::placeholder {
     color: $text-gray;
